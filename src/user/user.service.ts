@@ -20,6 +20,12 @@ export class UserService {
         return this.userRepository.findOne({ where: { cpf } });
     }
 
+    async findUserById(id: number){
+        return this.userRepository.findOne({where: {
+            id
+        }})
+    }
+
     async findAllUsers(){
         return this.userRepository.find()
     }

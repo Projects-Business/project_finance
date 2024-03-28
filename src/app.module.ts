@@ -4,6 +4,14 @@ import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './user/entities/userEntitie';
 import * as dotenv from 'dotenv'
+import { JwtModule } from '@nestjs/jwt';
+import { RendaGastosModule } from './orcamento/renda-gastos/renda-gastos.module';
+import { MetasFinanceirasModule } from './orcamento/metas-financeiras/metas-financeiras.module';
+import { ControleDespesasModule } from './orcamento/controle-despesas/controle-despesas.module';
+import { InvestimentosModule } from './planejamento-financeiro/investimentos/investimentos.module';
+import { ControleDividasModule } from './reducao-dividas/controle-dividas/controle-dividas.module';
+import { ConsolidacaoDividasModule } from './reducao-dividas/consolidacao-dividas/consolidacao-dividas.module';
+import { EducacaoFinanceiraModule } from './educacao-financeira/educacao-financeira.module';
 
 dotenv.config()
 @Module({
@@ -16,7 +24,7 @@ dotenv.config()
     database: process.env.DB_DATABASE,
     entities: [UserEntity], 
     synchronize: true,
-  })],
+  }), RendaGastosModule, MetasFinanceirasModule, ControleDespesasModule, InvestimentosModule, ControleDividasModule, ConsolidacaoDividasModule, EducacaoFinanceiraModule],
   controllers: [],
   providers: [],
 })
