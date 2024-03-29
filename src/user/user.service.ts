@@ -4,6 +4,8 @@ import { UserEntity } from './entities/userEntitie';
 import { InjectRepository } from '@nestjs/typeorm';
 import { createUserDTO } from './dto/createUser.dto';
 import * as bcrypt from 'bcrypt'
+import { UpdatePutDTO } from './dto/updatePutUser.dto';
+import { UpdatePatchDTO } from './dto/updatePatch.dto';
 
 @Injectable()
 export class UserService {
@@ -46,5 +48,26 @@ export class UserService {
         data.password = await bcrypt.hash(data.password, salt)
     
         return this.userRepository.save(data)
+    }
+
+    async updatePut(id: number, data: UpdatePutDTO): Promise<UserEntity>{
+        const user = await this.findUserById(id);
+
+       
+        if (!user) {
+            throw new BadRequestException('User not found.');
+        }  
+        await this.userRepository.update(id, data);
+        return user;
+    }
+
+    async deleteUser(id: number){
+        const user = await this.findUserById(id)
+
+        if(!user){
+            throw new BadRequestException("O usuário não foi encontrado.")
+        }
+
+        await this.userRepository.delete(id)
     }
 }
