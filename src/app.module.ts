@@ -13,6 +13,7 @@ import { ControleDividasModule } from './reducao-dividas/controle-dividas/contro
 import { ConsolidacaoDividasModule } from './reducao-dividas/consolidacao-dividas/consolidacao-dividas.module';
 import { EducacaoFinanceiraModule } from './educacao-financeira/educacao-financeira.module';
 import { RendaGastosEntity } from './orcamento/renda-gastos/entities/RendaGastosEntities';
+import { MetaFinanceiraEntity } from './orcamento/metas-financeiras/entities/metaFinanceiraEntities';
 
 dotenv.config()
 @Module({
@@ -23,7 +24,7 @@ dotenv.config()
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [UserEntity,RendaGastosEntity], 
+    entities: [UserEntity,RendaGastosEntity, MetaFinanceiraEntity], 
     synchronize: true,
   }), RendaGastosModule, MetasFinanceirasModule, ControleDespesasModule, InvestimentosModule, ControleDividasModule, ConsolidacaoDividasModule, EducacaoFinanceiraModule],
   controllers: [],

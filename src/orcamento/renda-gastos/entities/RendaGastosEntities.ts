@@ -16,4 +16,5 @@ export class RendaGastosEntity {
 
     @Column()
     type: string;
+
 }
