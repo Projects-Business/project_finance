@@ -10,10 +10,12 @@ import { MetasFinanceirasModule } from './orcamento/metas-financeiras/metas-fina
 import { ControleDespesasModule } from './orcamento/controle-despesas/controle-despesas.module';
 import { InvestimentosModule } from './planejamento-financeiro/investimentos/investimentos.module';
 import { ControleDividasModule } from './reducao-dividas/controle-dividas/controle-dividas.module';
-import { ConsolidacaoDividasModule } from './reducao-dividas/consolidacao-dividas/consolidacao-dividas.module';
-import { EducacaoFinanceiraModule } from './educacao-financeira/educacao-financeira.module';
 import { RendaGastosEntity } from './orcamento/renda-gastos/entities/RendaGastosEntities';
 import { MetaFinanceiraEntity } from './orcamento/metas-financeiras/entities/metaFinanceiraEntities';
+import { ControleDespesaEntity } from './orcamento/controle-despesas/entities/controleDespesaEntities';
+import { ControleDeDividasEntity } from './reducao-dividas/controle-dividas/entities/controleDividaEntity';
+import { TypeInvestimentModule } from './type-investiment/type-investiment.module';
+import { TypeInvestimentEntity } from './type-investiment/entities/typeEntity';
 
 dotenv.config()
 @Module({
@@ -24,9 +26,9 @@ dotenv.config()
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [UserEntity,RendaGastosEntity, MetaFinanceiraEntity], 
+    entities: [UserEntity,RendaGastosEntity, MetaFinanceiraEntity, ControleDespesaEntity, ControleDeDividasEntity, TypeInvestimentEntity], 
     synchronize: true,
-  }), RendaGastosModule, MetasFinanceirasModule, ControleDespesasModule, InvestimentosModule, ControleDividasModule, ConsolidacaoDividasModule, EducacaoFinanceiraModule],
+  }), RendaGastosModule, MetasFinanceirasModule, ControleDespesasModule, InvestimentosModule, ControleDividasModule, TypeInvestimentModule],
   controllers: [],
   providers: [],
 })
