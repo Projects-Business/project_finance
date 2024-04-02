@@ -16,6 +16,7 @@ import { ControleDespesaEntity } from './orcamento/controle-despesas/entities/co
 import { ControleDeDividasEntity } from './reducao-dividas/controle-dividas/entities/controleDividaEntity';
 import { TypeInvestimentModule } from './type-investiment/type-investiment.module';
 import { TypeInvestimentEntity } from './type-investiment/entities/typeEntity';
+import { InvestimentoEntity } from './planejamento-financeiro/investimentos/entities/investimentoEntity';
 
 dotenv.config()
 @Module({
@@ -26,7 +27,7 @@ dotenv.config()
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [UserEntity,RendaGastosEntity, MetaFinanceiraEntity, ControleDespesaEntity, ControleDeDividasEntity, TypeInvestimentEntity], 
+    entities: [UserEntity,RendaGastosEntity, MetaFinanceiraEntity, ControleDespesaEntity, ControleDeDividasEntity, TypeInvestimentEntity, InvestimentoEntity], 
     synchronize: true,
   }), RendaGastosModule, MetasFinanceirasModule, ControleDespesasModule, InvestimentosModule, ControleDividasModule, TypeInvestimentModule],
   controllers: [],
