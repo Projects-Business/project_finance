@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { RendaGastosService } from './renda-gastos.service';
 import { CreateRendaGastosDTO } from './dto/createRendaGastos.dto';
+import { UpdateRendaGastosDTO } from './dto/updateRendaGasto.dto';
 
 @Controller('rendaEgastos')
 export class RendaGastosController {
@@ -15,5 +16,15 @@ export class RendaGastosController {
     @Get()
     async findAllRendaGastos(){
       return this.rendaGastosService.findAll()
+    }
+
+    @Patch(':id')
+    async update(@Param('id', ParseIntPipe) id: number, @Body() data: UpdateRendaGastosDTO){
+      return this.rendaGastosService.updateRendaGasto(id, data)
+    }
+  
+    @Delete(':id')
+    async deletedDivida(@Param('id', ParseIntPipe) id: number){
+      return this.rendaGastosService.delete(id)
     }
 }

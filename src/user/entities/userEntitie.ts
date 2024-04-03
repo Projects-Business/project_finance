@@ -1,4 +1,3 @@
-import { IsNotEmpty } from "class-validator";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
 
 @Entity('user')
@@ -32,4 +31,5 @@ export class UserEntity {
 
     @UpdateDateColumn()
     updatedAt: string
+
 }
